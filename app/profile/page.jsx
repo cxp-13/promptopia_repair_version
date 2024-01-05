@@ -32,7 +32,7 @@ const MyProfile = () => {
             })
             const resBody = await response.json()
             console.log("删除接口返回resBody", resBody);
-            fetchPosts()
+            setPosts(posts.filter((item) => item._id !== post._id))
         }
 
 
