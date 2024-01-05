@@ -6,8 +6,6 @@ import { useRouter } from 'next/navigation'
 import Profile from '@components/Profile'
 
 const MyProfile = ({ params }) => {
-
-
     const { userId } = params
     // 原方案只能加载自己的
     const { data: session, status } = useSession()
