@@ -1,3 +1,9 @@
+# This project originated from https://www.youtube.com/watch?v=wm5gMKuwSYk
+### Mainly fix the following issues
+- Google account connection failure or timeout
+- Tailwindcss error
+- Some changes in the latest version of Mongodb
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
