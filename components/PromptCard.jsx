@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import React, { useState } from 'react'
 
-const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
+const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete}) => {
 
   const { data: session } = useSession()
 

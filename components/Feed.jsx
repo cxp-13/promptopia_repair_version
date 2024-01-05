@@ -1,22 +1,22 @@
 'use client'
 import { useState, useEffect, useMemo } from 'react'
 import PromptCard from './PromptCard'
+import Link from 'next/link'
 
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
     <div className='mt-16 prompt_layout'>
       {data.map((post) => (
-        <PromptCard key={post._id} post={post} handleTagClick={handleTagClick} />
+        <Link key={post._id} href={`/profile/${post.creator._id}`} >
+          <PromptCard  post={post} handleTagClick={handleTagClick} />
+        </Link>
       ))
       }
     </div>
   )
 }
 
-
-
 export const Feed = () => {
-
   const [searchText, setSearchText] = useState('')
   const [posts, setPosts] = useState([])
 
