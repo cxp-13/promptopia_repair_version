@@ -8,7 +8,7 @@ const PromptCardList = ({ data, handleTagClick }) => {
     <div className='mt-16 prompt_layout'>
       {data.map((post) => (
         <Link key={post._id} href={`/profile/${post.creator._id}`} >
-          <PromptCard  post={post} handleTagClick={handleTagClick} />
+          <PromptCard post={post} handleTagClick={handleTagClick} />
         </Link>
       ))
       }
@@ -18,6 +18,8 @@ const PromptCardList = ({ data, handleTagClick }) => {
 
 export const Feed = () => {
   const [searchText, setSearchText] = useState('')
+  const [selectTag, setSelectTag] = useState('')
+
   const [posts, setPosts] = useState([])
 
   const handleSearchChange = async (e) => {
@@ -32,32 +34,32 @@ export const Feed = () => {
     console.log("搜索框接口返回的值", data);
 
   }
-
+  // 通过过滤实现搜索框功能
   const displayPosts = useMemo(() => {
-    // js的方式
-    if (searchText === "") {
-      // 如果搜索框的值为空，返回全部数据
-      console.log("搜索框的值为空，返回全部数据");
-      return posts
-    }
-
-    const data = posts.filter((item) => {
+    let data = posts.filter((item) => {
       const { creator, prompt, tag } = item;
       const { username } = creator;
-      // 如果需要不区分大小写的搜索，可以使用 toLowerCase() 方法：
       return (
         prompt.toLowerCase().includes(searchText.toLowerCase()) ||
         username.toLowerCase().includes(searchText.toLowerCase()) ||
-        tag.toLowerCase().includes(searchText.toLowerCase())
+        tag.toLowerCase().includes(searchText.toLowerCase()) || searchText === ''
       );
     });
+
+    if(selectTag !== ''){
+      data = data.filter(item => item.tag === selectTag)
+      // 只执行一次展示，防止出现搜索框搜索tag名字，却只显示持有tag的post，而不显示prompt中有tag名字的post。
+      setSelectTag("")
+    }
 
     return data
   }, [searchText, posts])
 
+  // 点击tag，只展示该tag的posts功能
   const handleTagClick = (tag) => {
     console.log("当前选择的post", tag);
-
+    setSearchText(tag)
+    setSelectTag(tag)
   }
 
 

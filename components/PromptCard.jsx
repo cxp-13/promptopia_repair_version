@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import React, { useState } from 'react'
 
-const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete}) => {
+const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
 
   const { data: session } = useSession()
 
@@ -51,7 +51,10 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete}) => {
       </div>
       <p className='my-4 font-satoshi text-sm text-gray-700'>{post.prompt}</p>
       <p className='font-inter text-sm blue_gradient cursor-pointer'
-        onClick={() => handleTagClick(post.tag)}>{post.tag}</p>
+        onClick={(e) => {
+          e.preventDefault()
+          handleTagClick(post.tag)
+        }}>{post.tag}</p>
 
 
       {/* 编辑按钮 */}
