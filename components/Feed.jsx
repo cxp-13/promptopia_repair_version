@@ -27,12 +27,10 @@ export const Feed = () => {
     console.log("handleSearchChange", e.target.value);
     setSearchText(e.target.value)
 
-    // 请求接口的方式实现搜索框功能
-    const res = await fetch(`/api/prompt/search?searchText=${e.target.value}`)
-    const data = await res.json()
-    // error：TypeError: r is not a function。暂时放弃
-    console.log("搜索框接口返回的值", data);
-
+    // 请求接口的方式实现搜索框功能(error：TypeError: r is not a function。暂时放弃)
+    // const res = await fetch(`/api/prompt/search?searchText=${e.target.value}`)
+    // const data = await res.json()
+    // console.log("搜索框接口返回的值", data);
   }
   // 通过过滤实现搜索框功能
   const displayPosts = useMemo(() => {
