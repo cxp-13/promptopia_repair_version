@@ -1,4 +1,4 @@
-# This project originated from https://www.youtube.com/watch?v=wm5gMKuwSYk
+# This project originated from [https://www.youtube.com/watch?v=wm5gMKuwSYk](https://github.com/adrianhajdin/project_next_14_ai_prompt_sharing)
 ### Mainly fix the following issues
 - Google account connection failure or timeout
 - Tailwindcss error
